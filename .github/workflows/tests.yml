@@ -29,6 +29,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
+        with:
+          persist-credentials: false
 
       - name: Write script
         # tcpdf allowed memory exhausted needs the memory_limit workaround
@@ -63,15 +65,15 @@ jobs:
   test-php:
     name: Test on PHP ${{ matrix.php-version }}, ${{ matrix.composer-dependency }} and ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
-    continue-on-error: ${{ matrix.php-version == '8.5' }}
+    continue-on-error: ${{ matrix.php-version == '8.6' }}
     strategy:
       matrix:
-        php-version: ['8.2', '8.3', '8.4']
+        php-version: ['8.2', '8.3', '8.4', '8.5']
         os: [ubuntu-latest]
         composer-dependency: [locked, highest]
         php-extensions: ['mbstring, iconv, mysqli, zip, gd, bz2']
         include:
-          - php-version: '8.5'
+          - php-version: '8.6'
             os: ubuntu-latest
             composer-dependency: locked
             composer-options: '--ignore-platform-req=php+'
@@ -82,6 +84,7 @@ jobs:
         with:
           # Fetch some commits for Scrutinizer coverage upload
           fetch-depth: 15
+          persist-credentials: false
 
       - name: Install gettext
         run: sudo apt-get install -y gettext
@@ -143,6 +146,7 @@ jobs:
         with:
           # Fetch some commits for Scrutinizer coverage upload
           fetch-depth: 15
+          persist-credentials: false
 
       - name: Install gettext
         run: sudo apt-get install -y gettext

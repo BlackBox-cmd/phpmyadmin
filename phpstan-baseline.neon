@@ -502,18 +502,6 @@ parameters:
 			path: src/Config/FormDisplay.php
 
 		-
-			message: '#^Call to function function_exists\(\) with ''bzcompress''\|''gzcompress''\|''gzencode'' will always evaluate to true\.$#'
-			identifier: function.alreadyNarrowedType
-			count: 1
-			path: src/Config/FormDisplay.php
-
-		-
-			message: '#^Call to function function_exists\(\) with ''bzopen''\|''gzopen''\|''zip_open'' will always evaluate to true\.$#'
-			identifier: function.alreadyNarrowedType
-			count: 1
-			path: src/Config/FormDisplay.php
-
-		-
 			message: '#^Cannot access an offset on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 3
@@ -2023,6 +2011,12 @@ parameters:
 			path: src/Controllers/Import/StatusController.php
 
 		-
+			message: '#^Casting to string something that''s already string\.$#'
+			identifier: cast.useless
+			count: 1
+			path: src/Controllers/LicenseController.php
+
+		-
 			message: '#^Parameter \#1 \$partialDependencies of method PhpMyAdmin\\Normalization\:\:createNewTablesFor2NF\(\) expects array\<mixed\>, mixed given\.$#'
 			identifier: argument.type
 			count: 1
@@ -2111,6 +2105,12 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: src/Controllers/Operations/TableController.php
+
+		-
+			message: '#^Casting to string something that''s already string\.$#'
+			identifier: cast.useless
+			count: 1
+			path: src/Controllers/PhpInfoController.php
 
 		-
 			message: '#^Loose comparison via "\!\=" is not allowed\.$#'
@@ -4510,6 +4510,12 @@ parameters:
 			path: src/Database/Routines.php
 
 		-
+			message: '#^Cannot assign new offset to list\<string\>\|string\|null\.$#'
+			identifier: offsetAssign.dimType
+			count: 1
+			path: src/Database/Routines.php
+
+		-
 			message: '#^Cannot assign new offset to list\<string\|null\>\|string\.$#'
 			identifier: offsetAssign.dimType
 			count: 1
@@ -5380,12 +5386,6 @@ parameters:
 			path: src/Encoding.php
 
 		-
-			message: '#^Call to function function_exists\(\) with ''iconv''\|''mb_convert_encoding'' will always evaluate to true\.$#'
-			identifier: function.alreadyNarrowedType
-			count: 1
-			path: src/Encoding.php
-
-		-
 			message: '#^Foreach overwrites \$engine with its value variable\.$#'
 			identifier: foreach.valueOverwrite
 			count: 1
@@ -6193,15 +6193,15 @@ parameters:
 			path: src/Gis/GisMultiLineString.php
 
 		-
-			message: '#^Cannot access offset int\<0, max\> on mixed\.$#'
+			message: '#^Cannot access offset int\<0, max\> on array\<''data_length''\|int\<0, max\>, array\{x\: float, y\: float\}\|int\<0, max\>\>\|int\<1, max\>\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
-			count: 4
+			count: 1
 			path: src/Gis/GisMultiLineString.php
 
 		-
-			message: '#^Cannot access offset int\<0, max\> on non\-empty\-array\<''data_length''\|int\<0, max\>, array\{x\: float, y\: float\}\|int\<0, max\>\>\|int\<1, max\>\.$#'
+			message: '#^Cannot access offset int\<0, max\> on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
+			count: 4
 			path: src/Gis/GisMultiLineString.php
 
 		-
@@ -6369,13 +6369,7 @@ parameters:
 		-
 			message: '#^Cannot access offset int\<0, max\> on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
-			count: 6
-			path: src/Gis/GisMultiPolygon.php
-
-		-
-			message: '#^Cannot access offset int\<0, max\> on non\-empty\-array\<''data_length''\|int\<0, max\>, array\{x\: float, y\: float\}\|int\<0, max\>\>\|int\<1, max\>\.$#'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
+			count: 8
 			path: src/Gis/GisMultiPolygon.php
 
 		-
@@ -6499,15 +6493,15 @@ parameters:
 			path: src/Gis/GisPolygon.php
 
 		-
-			message: '#^Cannot access offset int\<0, max\> on mixed\.$#'
+			message: '#^Cannot access offset int\<0, max\> on array\<''data_length''\|int\<0, max\>, array\{x\: float, y\: float\}\|int\<0, max\>\>\|int\<1, max\>\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
-			count: 3
+			count: 1
 			path: src/Gis/GisPolygon.php
 
 		-
-			message: '#^Cannot access offset int\<0, max\> on non\-empty\-array\<''data_length''\|int\<0, max\>, array\{x\: float, y\: float\}\|int\<0, max\>\>\|int\<1, max\>\.$#'
+			message: '#^Cannot access offset int\<0, max\> on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
+			count: 3
 			path: src/Gis/GisPolygon.php
 
 		-
@@ -6579,6 +6573,12 @@ parameters:
 		-
 			message: '#^Parameter \#2 \$height of static method PhpMyAdmin\\Image\\ImageWrapper\:\:create\(\) expects int\<1, max\>, int given\.$#'
 			identifier: argument.type
+			count: 1
+			path: src/Gis/GisVisualization.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between \(T of ''ol''\)\|T of ''ol'' and ''ol'' will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
 			count: 1
 			path: src/Gis/GisVisualization.php
 
@@ -7288,7 +7288,7 @@ parameters:
 			path: src/InsertEdit.php
 
 		-
-			message: '#^Offset 2 might not exist on array\{\}\|array\{0\: non\-falsy\-string, 1\: string, 2\: string, 3\?\: numeric\-string\}\.$#'
+			message: '#^Offset 2 might not exist on array\{\}\|array\{0\: non\-falsy\-string, 1\: ''''\|''\\'''', 2\: string, 3\?\: numeric\-string\}\.$#'
 			identifier: offsetAccess.notFound
 			count: 1
 			path: src/InsertEdit.php
@@ -12972,7 +12972,7 @@ parameters:
 				Use dependency injection instead\.$#
 			'''
 			identifier: staticMethod.deprecated
-			count: 2
+			count: 4
 			path: src/Util.php
 
 		-
@@ -14460,6 +14460,12 @@ parameters:
 				Use dependency injection instead\.$#
 			'''
 			identifier: staticMethod.deprecated
+			count: 1
+			path: tests/unit/Controllers/PhpInfoControllerTest.php
+
+		-
+			message: '#^Casting to string something that''s already string\.$#'
+			identifier: cast.useless
 			count: 1
 			path: tests/unit/Controllers/PhpInfoControllerTest.php
 
@@ -16096,12 +16102,6 @@ parameters:
 			'''
 			identifier: staticMethod.deprecated
 			count: 13
-			path: tests/unit/Plugins/Auth/AuthenticationSignonTest.php
-
-		-
-			message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertSame\(\) with array\{lifetime\: 0, path\: ''/'', domain\: '''', secure\: false, partitioned\?\: false, httponly\: false, samesite\: ''''\} and array\{lifetime\: int\<0, max\>, path\: non\-falsy\-string, domain\: string, secure\: bool, httponly\: bool, samesite\: ''Lax''\|''lax''\|''None''\|''none''\|''Strict''\|''strict''\} will always evaluate to false\.$#'
-			identifier: staticMethod.impossibleType
-			count: 1
 			path: tests/unit/Plugins/Auth/AuthenticationSignonTest.php
 
 		-
